@@ -12,8 +12,10 @@ This only works for cloud volumes managed by the cloud providers and ony tested 
 If no errors return then you may go forward to prepare and other steps do not require arguments.
 
 ## Commands / Steps	
-### default: List Commands
-### validate (default)
+### default 
+List available commands. (no argument to `make`)
+
+### validate 
 First step is to validate we are able to complete this migration. Check above for the required input variables OLD, NEW, and NAMESPACE.
 	. kubectl - validate that kubectl is installed.
 	. kubeconfig (original) - validate originating kubeconfig file.

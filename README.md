@@ -1,14 +1,16 @@
 # Cloud PV Migration
-Utilize cli tools to migrate cloud storage from one cluster to another without removing the volumes. Utilize individual shell scripts glued by a make file.
+Utilize cli tools to migrate cloud storage from one cluster to another without removing the volumes. Utilize individual shell scripts glued by a make file. A temporary directory is used to store both kubeconfigs and pv/pvc files during the migration. 
 
 Each make command will execute the underlying shell scripts from the `/scripts` dir.
+
+The temporary directory (.tmp) will be created in the `make prepare` phase and will use the `/.temp-tempate` as its base.
 
 ## WARNING
 This only works for cloud volumes managed by the cloud providers and ony tested with azure azure disk currently though the process has been tested with Azure Files and Amazon EBS volumes.
 
 ## Running
  - `make validate OLD=path_to_old_kubeconfig NEW=path_to_new_kubeconfig NAMESPACE=namespace_to_migreate`
- 
+
 If no errors return then you may go forward to prepare and other steps do not require arguments.
  - `make prepare`
  - `make create`

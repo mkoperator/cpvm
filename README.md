@@ -56,4 +56,10 @@ Clean execution machine.
  - ready - check to make sure we are ready to proceed
  - temp-delete - remove temp dir
 
-
+## Temp Directory (.tmp)
+The temp directory will contain only validated kubeconfigs set to the proper namespace and pv/pvc files in various stages of migration. The directory is copied from `.temp-template` directory in the repository and copied as `.tmp`.
+ - new_kubeconfig.yaml - location of new cluster's kubeconfig.
+ - old_kubeconfig.yaml - location of old cluster's kubeconfig.
+ - /to-clean - After export but before cleaning, pv/pvc files are stored here.
+ - /to-migrate - After cleaning they are stored here.
+ - /migrated - Complete pv and pvcs.

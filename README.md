@@ -7,11 +7,11 @@ Each make command will execute the underlying shell scripts from the `/scripts` 
 This only works for cloud volumes managed by the cloud providers and ony tested with azure azure disk currently though the process has been tested with Azure Files and Amazon EBS volumes.
 
 ## Running
-. `make validate OLD=path_to_old_kubeconfig NEW=path_to_new_kubeconfig NAMESPACE=namespace_to_migreate`
-. `make prepare`
-. `make create`
-. `make migrate`
-. `make clean`
+ . `make validate OLD=path_to_old_kubeconfig NEW=path_to_new_kubeconfig NAMESPACE=namespace_to_migreate`
+ . `make prepare`
+ . `make create`
+ . `make migrate`
+ . `make clean`
 
 If no errors return then you may go forward to prepare and other steps do not require arguments.
 

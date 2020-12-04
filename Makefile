@@ -26,20 +26,20 @@ validate:
 	@scripts/validate-namespace.sh $(NEW) $(NAMESPACE) 
 # match new cluster namespace with old
 	@scripts/validate-match.sh $(OLD) $(NEW) $(NAMESPACE)
-# create temporary dir for processing the migration.
+# create temporary dir (.tmp) for processing the migration based on .temp-template
 	@scripts/validate-temp-create.sh $(OLD) $(NEW) $(NAMESPACE)
 
 prepare:
 	@echo "Preparing."
 # confirming ready for this step.
 	@scripts/prepare-ready.sh
-#
+# setting reclaim policy to not remove volumes when unbound
 	@scripts/prepare-reclaim-policy.sh
-#
+# export pvc from old cluster
 	@scripts/prepare-export-pvc.sh
-#
+# export pv from old cluster
 	@scripts/prepare-export-pv.sh
-#
+# clean pv and pvc and move them to new dir.
 	@scripts/prepare-clean.sh
 
 create:

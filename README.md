@@ -13,7 +13,8 @@ If no errors return then you may go forward to prepare and other steps do not re
 
 ## Commands / Steps	
 ### default: List Commands
-### validate(Default): (path to old cluster kubeconfig) (path to new cluster kube config) (namespace to migrate)
+### validate (default)
+First step is to validate we are able to complete this migration. Check above for the required input variables OLD, NEW, and NAMESPACE.
 	. kubectl - validate that kubectl is installed.
 	. kubeconfig (original) - validate originating kubeconfig file.
 	. kubeconfig (new) - validate new kubeconfig file.
@@ -23,23 +24,28 @@ If no errors return then you may go forward to prepare and other steps do not re
 	. temp-create (on exec fs) - create a temp directory and copy kubeconfigs and set 
 namespaces.
 
-### prepare: - executes on temp directory
+### prepare
+Executes on temp directory.
 	. ready - check to make sure we are ready to proceed with step
 	. reclaim-policy - change reclaim policy
 	. export-pvc - export and clean pvc
 	. export-pv - export and clean pv
 	. clean (new) - remove pv and pvc entries from new cluster.
 	
-### create: (new) - creates new records on new cluster
+### create
+Creates new records on new cluster.
 	. ready - check to make sure we are ready to proceed with step
 	. pvc - create the pvc from exports
 	. pv - create the pv from exports
 	
-### migrate: - remove binds from old cluster and add to new cluster.
+### migrate
+Remove binds from old cluster and add to new cluster.
 	. ready - check to make sure we are ready to proceed
 	. delete (old) - remove pvc from old cluster to unbind.
 	
-### clean: - clean execution machine
+### clean
+Clean execution machine.
 	. ready - check to make sure we are ready to proceed
 	. temp-delete - remove temp dir
-# cpvm
+
+

@@ -16,6 +16,8 @@ validate:
 	@echo "Validating."
 # Checking to make sure kubectl exists on executing machine.
 	@scripts/validate-kubectl.sh 
+# Checking to make sure sed exists on executing machine.
+	@scripts/validate-sed.sh 
 # validating old cluster kubeconfig
 	@scripts/validate-kubeconfig.sh $(OLD)
 # validating new cluster kubeconfig
